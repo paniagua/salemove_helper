@@ -1,5 +1,5 @@
-//After injectin the ../src/visitor_helper.js
-//
+//After injecting the ../src/visitor_helper.js
+
 sm.getApi().then(
   function(api){
     sm.SMHelper.setup(api, "production");
