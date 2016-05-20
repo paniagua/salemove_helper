@@ -14,5 +14,3 @@ sm.getApi().then(
   },
   function(err){ console.log("An error occured: ", err)}
 );
-
-

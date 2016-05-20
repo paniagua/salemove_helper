@@ -13,7 +13,7 @@
       environment = "local";
     }
     SMHelper.API_DOMAIN = SMHelper.API_DOMAINS[environment];
-    SMHelper.HEADERS =  api.getRequestHeaders();
+    SMHelper.HEADERS = api.getRequestHeaders();
   };
 
   SMHelper.getCurrentVisit = function() {
@@ -37,5 +37,3 @@
 
   root.SMHelper = SMHelper;
 })(sm);
-
-

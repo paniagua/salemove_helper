@@ -6,7 +6,6 @@
     "local": "api.local.dev"
   };
 
-
   SMHelper.setup = function(operatorToken, environment){
     if (!operatorToken) { throw("An operator token is required"); }
     if (!environment) {
@@ -14,7 +13,7 @@
       environment = "local";
     }
     SMHelper.API_DOMAIN = SMHelper.API_DOMAINS[environment];
-    SMHelper.HEADERS =  {
+    SMHelper.HEADERS = {
       'Authorization': 'Token ' + operatorToken,
       'Accept': 'application/vnd.salemove.v1+json'
     };
@@ -46,5 +45,3 @@
   root.SMHelper = SMHelper;
 }
 )(sm);
-
-

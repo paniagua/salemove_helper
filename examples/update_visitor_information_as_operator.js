@@ -9,5 +9,3 @@ sm.SMHelper.updateCustomAttributesForVisit(7823466, {"ATTRIBUTE_NAME": "ATTRIBUT
     console.log("An error ocurred: ", error)
   }
 );
-
-
