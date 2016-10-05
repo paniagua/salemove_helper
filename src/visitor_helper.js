@@ -35,5 +35,32 @@
     });
   };
 
+  SMHelper.updateVisitorInformation = function(name, email, phone, attributes){
+    return new Promise(function(resolve, reject) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://'+ SMHelper.API_DOMAIN + "/visitor");
+      Object.keys(SMHelper.HEADERS).forEach(function(key) {
+        xhr.setRequestHeader(key, SMHelper.HEADERS[key]);
+      });
+      xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 300) {
+         resolve(JSON.parse(xhr.responseText));
+        } else {
+          reject(xhr.statusText);
+        }
+      };
+      xhr.onerror = function() { reject(xhr.statusText); };
+      xhr.send(
+        JSON.stringify({
+          'note_update_method': 'append',
+          'custom_attributes': attributes,
+          'name': name,
+          'email': email,
+          'phone': phone
+        })
+      );
+    });
+  }
+
   root.SMHelper = SMHelper;
 })(sm);
