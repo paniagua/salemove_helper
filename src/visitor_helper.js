@@ -35,6 +35,25 @@
     });
   };
 
+  SMHelper.getCurrentVisitor = function() {
+    return new Promise(function(resolve, reject) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://'+ SMHelper.API_DOMAIN + "/visitor");
+      Object.keys(SMHelper.HEADERS).forEach(function(key) {
+        xhr.setRequestHeader(key, SMHelper.HEADERS[key]);
+      });
+      xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          resolve(JSON.parse(xhr.responseText));
+        } else {
+          reject(xhr.statusText);
+        }
+      };
+      xhr.onerror = function() { reject(xhr.statusText); };
+      xhr.send();
+    });
+  };
+
   SMHelper.updateVisitorInformation = function(name, email, phone, attributes){
     return new Promise(function(resolve, reject) {
       var xhr = new XMLHttpRequest();
